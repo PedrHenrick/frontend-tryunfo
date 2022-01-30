@@ -24,7 +24,7 @@ class Form extends Component {
       onSaveButtonClick,
     } = this.props;
     return (
-      <section>
+      <form>
         {/* Nome */}
         <Input
           name="Nome"
@@ -84,6 +84,7 @@ class Form extends Component {
 
         {/* button */}
         <button
+          name="verification"
           type="submit"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
@@ -91,7 +92,7 @@ class Form extends Component {
         >
           Salvar
         </button>
-      </section>
+      </form>
     );
   }
 }

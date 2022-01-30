@@ -1,7 +1,6 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
-// import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -15,6 +14,7 @@ class App extends React.Component {
       Imagem: '',
       Raridade: 'normal',
       trunfo: false,
+      // hasTrunfo: false,
       verification: true,
     };
   }
@@ -35,17 +35,22 @@ class App extends React.Component {
     const minValueAttr = 0;
     const sumAll = parseInt(Attr1, 10) + parseInt(Attr2, 10) + parseInt(Attr3, 10);
 
-    if (
-      Nome.length !== 0
-      && description.length !== 0
-      && Imagem.length !== 0
-      && parseInt(Attr1, 10) >= minValueAttr && parseInt(Attr1, 10) <= maxValueAttr
-      && parseInt(Attr2, 10) >= minValueAttr && parseInt(Attr2, 10) <= maxValueAttr
-      && parseInt(Attr3, 10) >= minValueAttr && parseInt(Attr3, 10) <= maxValueAttr
-      && sumAll <= maxValueTotal
-      && verification === true
-    ) this.handleChangeVerification(false);
-    else this.handleChangeVerification(true);
+    const arrayValid = [
+      Nome.length !== 0,
+      description.length !== 0,
+      Imagem.length !== 0,
+      parseInt(Attr1, 10) >= minValueAttr && parseInt(Attr1, 10) <= maxValueAttr,
+      parseInt(Attr2, 10) >= minValueAttr && parseInt(Attr2, 10) <= maxValueAttr,
+      parseInt(Attr3, 10) >= minValueAttr && parseInt(Attr3, 10) <= maxValueAttr,
+      sumAll <= maxValueTotal,
+      verification === true,
+    ];
+
+    if (arrayValid.every((item) => item === true) && verification === true) {
+      this.handleChangeVerification(false);
+    } else if (!(arrayValid.every((item) => item === true)) && verification === false) {
+      this.handleChangeVerification(true);
+    }
   }
 
   handleChangeVerification = (value) => {
@@ -75,6 +80,7 @@ class App extends React.Component {
       Imagem,
       Raridade,
       trunfo,
+      // hasTrunfo,
       verification,
     } = this.state;
     return (
@@ -89,7 +95,7 @@ class App extends React.Component {
           cardImage={ Imagem }
           cardRare={ Raridade }
           cardTrunfo={ trunfo }
-          hasTrunfo={ this.hasTrunfo }
+          // hasTrunfo={ this.hasTrunfo }
           isSaveButtonDisabled={ verification }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ () => {} }
