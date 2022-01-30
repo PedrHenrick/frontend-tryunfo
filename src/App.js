@@ -43,7 +43,6 @@ class App extends React.Component {
       parseInt(Attr2, 10) >= minValueAttr && parseInt(Attr2, 10) <= maxValueAttr,
       parseInt(Attr3, 10) >= minValueAttr && parseInt(Attr3, 10) <= maxValueAttr,
       sumAll <= maxValueTotal,
-      verification === true,
     ];
 
     if (arrayValid.every((item) => item === true) && verification === true) {
@@ -117,4 +116,8 @@ class App extends React.Component {
 
 export default App;
 
-// Referência: https://pt-br.reactjs.org/docs/react-component.html#componentdidupdate
+// Referência:
+//    componentDidUpdate: https://pt-br.reactjs.org/docs/react-component.html#componentdidupdate
+
+// Code review:
+//  Victor Santos: https://github.com/tryber/sd-018-b-project-tryunfo/pull/83

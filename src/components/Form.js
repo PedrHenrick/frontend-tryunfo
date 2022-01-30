@@ -84,7 +84,7 @@ class Form extends Component {
 
         {/* button */}
         <button
-          name="verification"
+          name="submit"
           type="submit"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
