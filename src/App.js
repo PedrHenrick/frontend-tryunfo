@@ -8,14 +8,15 @@ class App extends React.Component {
     this.state = {
       Nome: '',
       description: '',
-      Attr1: '',
-      Attr2: '',
-      Attr3: '',
+      Attr1: '0',
+      Attr2: '0',
+      Attr3: '0',
       Imagem: '',
       Raridade: 'normal',
       trunfo: false,
       // hasTrunfo: false,
       verification: true,
+      cardList: [],
     };
   }
 
@@ -69,6 +70,23 @@ class App extends React.Component {
     });
   };
 
+  onSaveButtonClick = (e, card) => {
+    e.preventDefault();
+
+    const { cardList } = this.state;
+
+    this.setState({
+      Nome: '',
+      description: '',
+      Attr1: '0',
+      Attr2: '0',
+      Attr3: '0',
+      Imagem: '',
+      Raridade: 'normal',
+      cardList: [...cardList, card],
+    });
+  }
+
   render() {
     const {
       Nome,
@@ -84,7 +102,6 @@ class App extends React.Component {
     } = this.state;
     return (
       <div>
-        <h1>Tryunfo</h1>
         <Form
           cardName={ Nome }
           cardDescription={ description }
@@ -97,7 +114,7 @@ class App extends React.Component {
           // hasTrunfo={ this.hasTrunfo }
           isSaveButtonDisabled={ verification }
           onInputChange={ this.onInputChange }
-          onSaveButtonClick={ () => {} }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ Nome }
@@ -117,6 +134,7 @@ class App extends React.Component {
 export default App;
 
 // Referência:
+//    Checagem de tipos: https://pt-br.reactjs.org/docs/typechecking-with-proptypes.html#gatsby-focus-wrapper
 //    componentDidUpdate: https://pt-br.reactjs.org/docs/react-component.html#componentdidupdate
 
 // Code review:

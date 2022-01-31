@@ -23,6 +23,18 @@ class Form extends Component {
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+
+    const card = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+
     return (
       <form>
         {/* Nome */}
@@ -84,11 +96,10 @@ class Form extends Component {
 
         {/* button */}
         <button
-          name="submit"
           type="submit"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
+          onClick={ (e) => onSaveButtonClick(e, card) }
         >
           Salvar
         </button>
