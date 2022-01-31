@@ -14,7 +14,7 @@ class App extends React.Component {
       Imagem: '',
       Raridade: 'normal',
       trunfo: false,
-      // hasTrunfo: false,
+      hasTrunfo: false,
       verification: true,
       cardList: [],
     };
@@ -70,9 +70,7 @@ class App extends React.Component {
     });
   };
 
-  onSaveButtonClick = (e, card) => {
-    e.preventDefault();
-
+  onSaveButtonClick = (card) => {
     const { cardList } = this.state;
 
     this.setState({
@@ -85,6 +83,13 @@ class App extends React.Component {
       Raridade: 'normal',
       cardList: [...cardList, card],
     });
+
+    if (card.cardTrunfo) {
+      this.setState({
+        hasTrunfo: true,
+        trunfo: false,
+      });
+    }
   }
 
   render() {
@@ -97,7 +102,7 @@ class App extends React.Component {
       Imagem,
       Raridade,
       trunfo,
-      // hasTrunfo,
+      hasTrunfo,
       verification,
     } = this.state;
     return (
@@ -111,7 +116,7 @@ class App extends React.Component {
           cardImage={ Imagem }
           cardRare={ Raridade }
           cardTrunfo={ trunfo }
-          // hasTrunfo={ this.hasTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ verification }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
