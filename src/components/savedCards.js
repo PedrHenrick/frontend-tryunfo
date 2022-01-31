@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class savedCards extends Component {
+class SavedCards extends Component {
   render() {
     const {
       cardName,
@@ -28,9 +28,9 @@ class savedCards extends Component {
   }
 }
 
-export default savedCards;
+export default SavedCards;
 
-savedCards.propTypes = {
+SavedCards.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,

@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
-// import savedCards from './components/savedCards';
+import SavedCards from './components/savedCards';
 
 class App extends React.Component {
   constructor() {
@@ -134,7 +134,7 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
         />
         { cardList.map((cardS) => (
-          <Card
+          <SavedCards
             key={ cardS.cardName }
             cardName={ cardS.cardName }
             cardDescription={ cardS.cardDescription }
