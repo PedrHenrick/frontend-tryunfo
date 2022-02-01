@@ -1,4 +1,5 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
 import Form from './components/Form';
 import Card from './components/Card';
 import SavedCards from './components/savedCards';
@@ -74,6 +75,8 @@ class App extends React.Component {
   onSaveButtonClick = (card) => {
     const { cardList } = this.state;
 
+    card.key = nanoid();
+
     this.setState({
       Nome: '',
       description: '',
@@ -90,6 +93,22 @@ class App extends React.Component {
         hasTrunfo: true,
         trunfo: false,
       });
+    }
+  }
+
+  deleteCards = (e) => {
+    // e.preventDefault();
+    const { cardList } = this.state;
+    const keyOfElement = e.target.attributes.keyy.value;
+    const element = cardList.filter((cardDel) => cardDel.key !== keyOfElement);
+    this.setState({
+      cardList: element,
+    });
+
+    const cardSelect = cardList.filter((cardDel) => cardDel.key === keyOfElement);
+
+    if (cardSelect[0].cardTrunfo) {
+      this.setState({ hasTrunfo: false, trunfo: false });
     }
   }
 
@@ -135,7 +154,8 @@ class App extends React.Component {
         />
         { cardList.map((cardS) => (
           <SavedCards
-            key={ cardS.cardName }
+            key={ cardS.key }
+            keyy={ cardS.key }
             cardName={ cardS.cardName }
             cardDescription={ cardS.cardDescription }
             cardAttr1={ cardS.cardAttr1 }
@@ -144,6 +164,8 @@ class App extends React.Component {
             cardImage={ cardS.cardImage }
             cardRare={ cardS.cardRare }
             cardTrunfo={ cardS.cardTrunfo }
+            deleteCards={ this.deleteCards }
+
           />
         ))}
       </div>
