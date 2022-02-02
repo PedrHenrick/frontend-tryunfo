@@ -14,6 +14,7 @@ class Textarea extends Component {
           name="description"
           data-testid="description-input"
           value={ value }
+          maxLength="89"
           onChange={ onInputChange }
         />
       </label>

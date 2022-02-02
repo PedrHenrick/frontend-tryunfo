@@ -1,3 +1,161 @@
-* {
-  padding: 0;
+/* Header normal */
+header {
+  text-align: center;
+  background-color: grey;
+  color: white;
+  margin: 70;
+  padding: 10px;
+}
+
+/* Section pai */
+.new_card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+/* Section filho 1 */
+.Organizer1 {
+  background-color: white;
+  width: 50%;
+  height: 550px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Título do preview e do form */
+.Title {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* Section do forms/neta */
+.formForCard {
+  min-width: 260px;
+  max-width: 260px;
+  height: 470px;
+  padding: 10px;
+  border-radius: 20px;
+  /* display: inline-block; */
+}
+
+/* Section filho 2*/
+.Organizer2 {
+  display: flex;
+  background-color: seagreen;
+  width: 50%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Section do preview/neta */
+.preview {
+  border-radius: 20px;
+  min-width: 260px;
+  max-width: 260px;
+  height: 470px;
+  padding: 10px;
+}
+
+/* CSS do formulário */
+.checkbox {
+  width: fit-content;
+  height: fit-content;
+}
+
+.labelAttr {
+  display: inline-flex;
+  align-items: center;
+}
+
+.inputAttr {
+  margin-left: 7px;
+  width: 206px;
+  height: 30px;
+  text-align: end;
+}
+
+/* CSS do preview */
+.NameCard {
+  height: 28px;
+}
+
+.Descricao_card {
+  display: block;
+  margin-top: 5px;
+  height: 70px;
+  max-width: 300px;
+  white-space: wrap;
+}
+
+.image_cont {
+  display: flex;
+  justify-content: center;
+}
+
+.imgCard {
+  border: black 1px solid;
+  width: 230px;
+  height: 230px;
+}
+
+/* CSS em tags genéricas  */
+h1 {
+  margin: 0;
+  font-style: oblique;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  cursor: default;
+}
+
+h2 {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  /* margin-bottom: 5px; */
+}
+
+p {
+  margin: 8px;
+}
+
+label {
+  display: inline-block;
+}
+
+textarea {
+  
+  resize: none;
+  width: 250px;
+  height: 50px;
+}
+
+input {
+  width: 250px;
+  margin-top: 5px;
+  height: 30px;
+}
+
+select {
+  margin-left: 7px;
+  padding: 5px;
+  margin-top: 5px;
+  background-color: rgb(43, 138, 43);
+  color: white;
+  border-radius: 4px;
+}
+
+button {
+  display: block;
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: 100px;  
+}
+
+button:enabled {
+  background-color: rgb(49, 128, 232);
+  color: white;
+  border-radius: 4px;
 }

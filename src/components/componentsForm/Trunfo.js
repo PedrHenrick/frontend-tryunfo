@@ -12,6 +12,7 @@ class Trunfo extends Component {
         Super trybe trunfo
         <input
           name="trunfo"
+          className="checkbox"
           data-testid="trunfo-input"
           type="checkbox"
           checked={ checked }

@@ -10,11 +10,12 @@ class Attr extends Component {
       onInputChange,
     } = this.props;
     return (
-      <label htmlFor={ name }>
+      <label className="labelAttr" htmlFor={ name }>
         { name }
         <input
           max="90"
           name={ name }
+          className="inputAttr"
           data-testid={ data }
           type="number"
           value={ value }

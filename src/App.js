@@ -4,6 +4,9 @@ import Form from './components/Form';
 import Card from './components/Card';
 import SavedCards from './components/savedCards';
 
+import './App.css';
+import Header from './components/Header';
+
 class App extends React.Component {
   constructor() {
     super();
@@ -97,7 +100,6 @@ class App extends React.Component {
   }
 
   deleteCards = (e) => {
-    // e.preventDefault();
     const { cardList } = this.state;
     const keyOfElement = e.target.attributes.keyy.value;
     const element = cardList.filter((cardDel) => cardDel.key !== keyOfElement);
@@ -128,46 +130,66 @@ class App extends React.Component {
     } = this.state;
     return (
       <div>
-        <Form
-          cardName={ Nome }
-          cardDescription={ description }
-          cardAttr1={ Attr1 }
-          cardAttr2={ Attr2 }
-          cardAttr3={ Attr3 }
-          cardImage={ Imagem }
-          cardRare={ Raridade }
-          cardTrunfo={ trunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ verification }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ Nome }
-          cardDescription={ description }
-          cardAttr1={ Attr1 }
-          cardAttr2={ Attr2 }
-          cardAttr3={ Attr3 }
-          cardImage={ Imagem }
-          cardRare={ Raridade }
-          cardTrunfo={ trunfo }
-        />
-        { cardList.map((cardS) => (
-          <SavedCards
-            key={ cardS.key }
-            keyy={ cardS.key }
-            cardName={ cardS.cardName }
-            cardDescription={ cardS.cardDescription }
-            cardAttr1={ cardS.cardAttr1 }
-            cardAttr2={ cardS.cardAttr2 }
-            cardAttr3={ cardS.cardAttr3 }
-            cardImage={ cardS.cardImage }
-            cardRare={ cardS.cardRare }
-            cardTrunfo={ cardS.cardTrunfo }
-            deleteCards={ this.deleteCards }
+        <Header />
+        <article className="new_card">
+          <section className="Organizer1">
+            <h2 className="Title">Adicione a carta</h2>
+            <section className="formForCard">
+              <Form
+                cardName={ Nome }
+                cardDescription={ description }
+                cardAttr1={ Attr1 }
+                cardAttr2={ Attr2 }
+                cardAttr3={ Attr3 }
+                cardImage={ Imagem }
+                cardRare={ Raridade }
+                cardTrunfo={ trunfo }
+                hasTrunfo={ hasTrunfo }
+                isSaveButtonDisabled={ verification }
+                onInputChange={ this.onInputChange }
+                onSaveButtonClick={ this.onSaveButtonClick }
+              />
+            </section>
+          </section>
+          <section className="Organizer2">
+            <h2>Preview</h2>
+            <section className="preview">
+              <Card
+                cardName={ Nome }
+                cardDescription={ description }
+                cardAttr1={ Attr1 }
+                cardAttr2={ Attr2 }
+                cardAttr3={ Attr3 }
+                cardImage={ Imagem }
+                cardRare={ Raridade }
+                cardTrunfo={ trunfo }
+              />
+            </section>
+          </section>
+        </article>
 
-          />
-        ))}
+        <article className="filter_card">
+          <section className="all-cards">
+            <h1>Input</h1>
+          </section>
+          <section className="cards">
+            { cardList.map((cardS) => (
+              <SavedCards
+                key={ cardS.key }
+                keyy={ cardS.key }
+                cardName={ cardS.cardName }
+                cardDescription={ cardS.cardDescription }
+                cardAttr1={ cardS.cardAttr1 }
+                cardAttr2={ cardS.cardAttr2 }
+                cardAttr3={ cardS.cardAttr3 }
+                cardImage={ cardS.cardImage }
+                cardRare={ cardS.cardRare }
+                cardTrunfo={ cardS.cardTrunfo }
+                deleteCards={ this.deleteCards }
+              />
+            ))}
+          </section>
+        </article>
       </div>
     );
   }
