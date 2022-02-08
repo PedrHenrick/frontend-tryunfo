@@ -31,13 +31,13 @@ class Card extends Component {
           { `Descrição: ${cardDescription}` }
         </p>
         <p data-testid="attr1-card">
-          { `Attr01 ........................................... ${cardAttr1}` }
+          { `Attr01 ............................... ${cardAttr1}` }
         </p>
         <p data-testid="attr2-card">
-          { `Attr02 ........................................... ${cardAttr2}` }
+          { `Attr02 ............................... ${cardAttr2}` }
         </p>
         <p data-testid="attr3-card">
-          { `Attr03 ........................................... ${cardAttr3}` }
+          { `Attr03 ............................... ${cardAttr3}` }
         </p>
         <p data-testid="rare-card">
           { `Tipo: ${cardRare}` }

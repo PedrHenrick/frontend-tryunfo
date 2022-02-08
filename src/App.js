@@ -6,6 +6,9 @@ import SavedCards from './components/savedCards';
 
 import './App.css';
 import Header from './components/Header';
+import InputSaved from './components/componentsBySaveds/InputSaved';
+import SelectSaved from './components/componentsBySaveds/SelectSaved';
+import TrunfoSaved from './components/componentsBySaveds/TrunfoSaved';
 
 class App extends React.Component {
   constructor() {
@@ -152,7 +155,7 @@ class App extends React.Component {
             </section>
           </section>
           <section className="Organizer2">
-            <h2>Preview</h2>
+            <h2 className="Title">Preview</h2>
             <section className="preview">
               <Card
                 cardName={ Nome }
@@ -169,10 +172,15 @@ class App extends React.Component {
         </article>
 
         <article className="filter_card">
-          <section className="all-cards">
-            <h1>Input</h1>
+          <section className="searchCards">
+            <h1>Pesquisar carta:</h1>
+            <InputSaved
+              data="name-filter"
+            />
+            <SelectSaved />
+            <TrunfoSaved />
           </section>
-          <section className="cards">
+          <section className="savedCards">
             { cardList.map((cardS) => (
               <SavedCards
                 key={ cardS.key }

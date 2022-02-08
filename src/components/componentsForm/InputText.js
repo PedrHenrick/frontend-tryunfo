@@ -13,6 +13,7 @@ class Input extends Component {
       <label htmlFor={ name }>
         { name }
         <input
+          className="AttrCard"
           name={ name }
           data-testid={ data }
           type="text"
