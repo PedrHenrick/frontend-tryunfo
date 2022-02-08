@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class TrunfoSaved extends Component {
   render() {
-    // const {
-    //   checked,
-    //   onInputChange,
-    // } = this.props;
+    const {
+      checked,
+      onInputChange,
+    } = this.props;
     return (
-      <label htmlFor="trunfo">
+      <label htmlFor="filterTrunfo">
         Super trybe trunfo
         <input
-          // name="trunfo"
+          name="filterTrunfo"
           className="checkbox"
-          // data-testid="trunfo-input"
+          data-testid="trunfo-filter"
           type="checkbox"
-          // checked={ checked }
-          // onChange={ onInputChange }
+          checked={ checked }
+          onChange={ onInputChange }
         />
       </label>
     );
@@ -25,7 +25,7 @@ class TrunfoSaved extends Component {
 
 export default TrunfoSaved;
 
-// Trunfo.propTypes = {
-//   checked: PropTypes.bool.isRequired,
-//   onInputChange: PropTypes.func.isRequired,
-// };
+TrunfoSaved.propTypes = {
+  checked: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+};

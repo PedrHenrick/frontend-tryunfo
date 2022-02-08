@@ -27,6 +27,7 @@ class App extends React.Component {
       cardList: [],
       filterName: '',
       filterRarity: 'todas',
+      filterTrunfo: false,
     };
   }
 
@@ -105,11 +106,16 @@ class App extends React.Component {
   }
 
   filterManager = (card) => {
-    const { filterName, filterRarity } = this.state;
-    const name = card.cardName.includes(filterName);
-    console.log(name);
-    const rarity = filterRarity === 'todas' ? true : card.cardRare === filterRarity;
-    return name && rarity;
+    const { filterName, filterRarity, filterTrunfo } = this.state;
+    let result = false;
+    if (filterTrunfo === true) {
+      result = card.cardTrunfo === true;
+    } else {
+      const name = card.cardName.includes(filterName);
+      const rarity = filterRarity === 'todas' ? true : card.cardRare === filterRarity;
+      result = name && rarity;
+    }
+    return result;
   }
 
   deleteCards = (e) => {
@@ -142,6 +148,7 @@ class App extends React.Component {
       cardList,
       filterName,
       filterRarity,
+      filterTrunfo,
     } = this.state;
     return (
       <div>
@@ -196,7 +203,10 @@ class App extends React.Component {
               value={ filterRarity }
               onInputChange={ this.onInputChange }
             />
-            <TrunfoSaved />
+            <TrunfoSaved
+              checked={ filterTrunfo }
+              onInputChange={ this.onInputChange }
+            />
           </section>
           <section className="savedCards">
             { cardList.filter((card) => this.filterManager(card))
