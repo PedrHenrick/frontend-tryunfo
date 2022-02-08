@@ -25,6 +25,7 @@ class App extends React.Component {
       hasTrunfo: false,
       verification: true,
       cardList: [],
+      filterName: '',
     };
   }
 
@@ -130,6 +131,7 @@ class App extends React.Component {
       hasTrunfo,
       verification,
       cardList,
+      filterName,
     } = this.state;
     return (
       <div>
@@ -176,26 +178,32 @@ class App extends React.Component {
             <h1>Pesquisar carta:</h1>
             <InputSaved
               data="name-filter"
+              value={ filterName }
+              onInputChange={ this.onInputChange }
+              name="filterName"
             />
             <SelectSaved />
             <TrunfoSaved />
           </section>
           <section className="savedCards">
-            { cardList.map((cardS) => (
-              <SavedCards
-                key={ cardS.key }
-                keyy={ cardS.key }
-                cardName={ cardS.cardName }
-                cardDescription={ cardS.cardDescription }
-                cardAttr1={ cardS.cardAttr1 }
-                cardAttr2={ cardS.cardAttr2 }
-                cardAttr3={ cardS.cardAttr3 }
-                cardImage={ cardS.cardImage }
-                cardRare={ cardS.cardRare }
-                cardTrunfo={ cardS.cardTrunfo }
-                deleteCards={ this.deleteCards }
-              />
-            ))}
+            { filterName.length > 0
+              ? cardList.filter((list) => list.cardName.includes(filterName))
+                .map((cardS) => (
+                  <SavedCards
+                    key={ cardS.key }
+                    keyy={ cardS.key }
+                    { ...cardS }
+                    deleteCards={ this.deleteCards }
+                  />
+                ))
+              : cardList.map((cardss) => (
+                <SavedCards
+                  key={ cardss.key }
+                  keyy={ cardss.key }
+                  { ...cardss }
+                  deleteCards={ this.deleteCards }
+                />
+              )) }
           </section>
         </article>
       </div>
