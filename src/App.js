@@ -26,6 +26,7 @@ class App extends React.Component {
       verification: true,
       cardList: [],
       filterName: '',
+      filterRarity: 'todas',
     };
   }
 
@@ -103,6 +104,14 @@ class App extends React.Component {
     }
   }
 
+  filterManager = (card) => {
+    const { filterName, filterRarity } = this.state;
+    const name = card.cardName.includes(filterName);
+    console.log(name);
+    const rarity = filterRarity === 'todas' ? true : card.cardRare === filterRarity;
+    return name && rarity;
+  }
+
   deleteCards = (e) => {
     const { cardList } = this.state;
     const keyOfElement = e.target.attributes.keyy.value;
@@ -132,6 +141,7 @@ class App extends React.Component {
       verification,
       cardList,
       filterName,
+      filterRarity,
     } = this.state;
     return (
       <div>
@@ -182,25 +192,19 @@ class App extends React.Component {
               onInputChange={ this.onInputChange }
               name="filterName"
             />
-            <SelectSaved />
+            <SelectSaved
+              value={ filterRarity }
+              onInputChange={ this.onInputChange }
+            />
             <TrunfoSaved />
           </section>
           <section className="savedCards">
-            { filterName.length > 0
-              ? cardList.filter((list) => list.cardName.includes(filterName))
-                .map((cardS) => (
-                  <SavedCards
-                    key={ cardS.key }
-                    keyy={ cardS.key }
-                    { ...cardS }
-                    deleteCards={ this.deleteCards }
-                  />
-                ))
-              : cardList.map((cardss) => (
+            { cardList.filter((card) => this.filterManager(card))
+              .map((cardS) => (
                 <SavedCards
-                  key={ cardss.key }
-                  keyy={ cardss.key }
-                  { ...cardss }
+                  key={ cardS.key }
+                  keyy={ cardS.key }
+                  { ...cardS }
                   deleteCards={ this.deleteCards }
                 />
               )) }
